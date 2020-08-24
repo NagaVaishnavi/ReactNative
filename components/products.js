@@ -13,9 +13,9 @@ export default function ProductComponent({navigation}){
  const [users, setUsers] = useState([])
 
   useEffect(()=>{
-    axios.get(' http://localhost:3000/allproducts')
+    axios.get(' http://localhost:3000/allproducts1')
           .then(res =>{
-            console.log(res.data)
+            // console.log(res.data)
             setUsers(res.data)
           })
   })                                      
@@ -24,6 +24,7 @@ export default function ProductComponent({navigation}){
   
 
   return (
+    
     <View style={mystyles.maincontainer}>
        
        
@@ -32,8 +33,10 @@ export default function ProductComponent({navigation}){
           users.map(user =>{
             return (
               <View key={user.id}>
-                <TouchableOpacity onPress={()=>{console.log(user.Product_Name)}}>
+          
+                <TouchableOpacity onPress={()=>{navigation.navigate(name='ProductDetails', {item: user})}} >
                   <Text style={mystyles.listitem}>{user.Product_Name}</Text>
+                 
                 </TouchableOpacity>
                 
               </View>
@@ -41,20 +44,19 @@ export default function ProductComponent({navigation}){
           })
         }
       </ScrollView>
- 
       <TouchableOpacity style={globalstyles.touchButtonContainer}
                               onPress={()=>{navigation.navigate('AddProduct')}}      >
                 <Text>Add Product
                 </Text>
             </TouchableOpacity>
     </View>
-   
+  
   )
 }
 
 const mystyles = StyleSheet.create({
   maincontainer:{
-    backgroundColor:'pink',
+  
     flex:1,
     //alignItems:'center',
     //justifyContent:'center'
@@ -62,8 +64,9 @@ const mystyles = StyleSheet.create({
   listitem:{
     marginTop:20,
     fontSize:30,
-    backgroundColor:'goldenrod',
+    backgroundColor:'white',
     padding:20,
-    color:'purple'
+    color:'purple',
+    textAlign:'center'
   }
 })

@@ -6,6 +6,8 @@ import ProductComponent from "../components/products";
 
 import { NavigationContainer } from "@react-navigation/native";
 import AddProductComponent from '../components/addproduct';
+import ProductDetailsComponent from '../components/productdetails';
+import EditProductComponent from '../components/editproduct';
 
 const Stack = createStackNavigator()
 
@@ -17,7 +19,7 @@ function MyStackNavigator(){
                             screenOptions={{
                                 gestureEnabled:true,
                                 headerStyle:{
-                                    backgroundColor:'wheat',
+                                    backgroundColor:'lightblue',
                                     height:50
                                 }
                                 }} 
@@ -25,6 +27,8 @@ function MyStackNavigator(){
                
                 <Stack.Screen name="Products" component={ProductComponent}></Stack.Screen>
                 <Stack.Screen name="AddProduct" component={AddProductComponent}></Stack.Screen>
+                <Stack.Screen name="EditProduct" component={EditProductComponent}></Stack.Screen>
+                <Stack.Screen name="ProductDetails" component={ProductDetailsComponent}></Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
     )
