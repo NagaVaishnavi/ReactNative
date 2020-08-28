@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { View, StyleSheet, TextInput, Text, Button, TouchableOpacity,FlatList } from 'react-native';
 import { globalstyles } from '../globalstyles/globalstyles';
 import Axios from "axios";
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function ProductDetailsComponent(navigation) {
   console.log(navigation)
@@ -29,9 +30,12 @@ const deleteHandler=(id)=>{
   }
 
 return (
+  <ScrollView>
   <View>
     <View style={globalstyles.a1}>
-
+    {/* <Text><h1>Product_Name: <img src ={detail.Product_Image}></h1></Text> */}
+    <Text><h1> <img src={detail.Product_Image}></img></h1></Text>
+    
       <Text><h1>Product_Name: {detail.Product_Name}</h1></Text>
       <Text><h1>Product_Category: {detail.Product_Category}</h1></Text>
       <Text><h1>Product_Quantity: {detail.Product_Quantity}</h1></Text>
@@ -51,7 +55,7 @@ return (
 
        </View>
   </View>
- 
+ </ScrollView>
    
   )
 }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { globalstyles } from "../globalstyles/globalstyles";
-import { View, Text, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, TextInput,Picker } from "react-native";
 import Axios from "axios";
 
 export default function AddProductComponent({ navigation }) {
     const [name, setname] = useState('');
     const [category, setCategory] = useState('');
+    console.log(category)
     const [quantity, setQuantity] = useState('');
    const [manufacturer, setManufacturer] = useState('');
     const [vendor, setVendor] = useState('');
@@ -47,13 +48,13 @@ export default function AddProductComponent({ navigation }) {
     }
     return (
         <div>
-        <div style={{width:'60%',backgroundColor: 'lightblue', padding:'3% 3% 3% 3%',border: '3px solid #f1f1f1',margin: '0px 0% 0px 18%'}}>
+        <div style={{width:'60%',  backgroundColor:"lightblue",padding:'3% 3% 3% 3%',border: '3px solid #f1f1f1',margin: '0px 0% 0px 18%'}}>
         <View>
             <View> 
             <Text style={globalstyles.textStyle}>Add Product</Text>
             <View>
                 <TextInput
-                  style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                  style={{ height: 40,borderColor: 'gray', borderWidth: 1 }}
                     placeholder="Product Name"
                     placeholderTextColor="#003f5c"
                     onChangeText={namevalue}
@@ -62,12 +63,18 @@ export default function AddProductComponent({ navigation }) {
            
 <br></br><br></br>
 <View style={globalstyles.inputfriend} >
-                <TextInput
-                 style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                    placeholder="Category"
-                    placeholderTextColor="#003f5c"
-                    onChangeText={categoryValue}
-                />
+<Picker
+                selectedValue={categoryValue}
+                style={{ display:"flex",backgroundColor:"lightblue"}}
+                onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}
+            >
+                <Picker.Item label="Mobile" itemValue="Mobile" />
+                <Picker.Item label="Laptop" value="Laptop" />
+                <Picker.Item label="Camera" value="Camera" />
+                <Picker.Item label="Speaker" value="Speaker" />
+                <Picker.Item label="Accesories" value="Accesories" />
+                <Picker.Item label="Headphones" value="Headphones" />
+            </Picker>
             </View>
             <br></br><br></br>
             <View>
